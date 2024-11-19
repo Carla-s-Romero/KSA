@@ -56,6 +56,7 @@ import adicionar from '../assets/Classes/AdicionarTurma.png';
 import quantidadeAlunosIcon from '../assets/Classes/IconColaboradores.png';
 import fundoImg from '../assets/Classes/turmaTeste/YOUTZ-MATEMATICA-ENEM.jpg';
 import ImgProfessor from '../assets/Classes/turmaTeste/12161378-m.jpg';
+import cancelarModel from '../assets/Classes/image 30.png';
 
 // Imagens Biblioteca
 import fundoCards from '../assets/Library/Group 63.png'
@@ -146,6 +147,7 @@ export {
   quantidadeAlunosIcon,   // Ícone sobre a quantidade de alunos         
   fundoImg,
   ImgProfessor,
+  cancelarModel,
 
   //Biblioteca
   fundoCards,

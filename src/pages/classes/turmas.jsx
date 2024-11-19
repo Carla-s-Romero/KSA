@@ -7,7 +7,8 @@ import {
   Footer,
   fundoImg,
   CardsClasse,
-  ImgProfessor
+  ImgProfessor,
+  cancelarModel
 } from '../../imports/imports';
 import './turmas.css';
 
@@ -165,39 +166,61 @@ function Turma() {
     </section>
 
       {showModal && (
-        <div className="modal-overlay">
+        <section className="modal-overlay">
           <div className="modal-content">
-            <h3>Adicionar Turma</h3>
-            <form onSubmit={handleSubmit}>
-              <label>Nome da Turma:</label>
-              <input type="text" onChange={handleChange} placeholder="Nome da turma" name='nome' />
+            <button type="button" onClick={closeModal} id='CancelarModel'><img src={cancelarModel} alt='Botão de cancelar' id='CancelarModelImg' /></button>
+            <div className='title-modal'>
+              <h3>Criar Turma</h3>
+              <small>Preencha os dados a baixo para criar uma nova turma</small>
+                </div>
+              
+           
+            
+        <form onSubmit={handleSubmit} className='from-Turma'>
+         <label>Nome da Turma:</label>
+              <input type="text" onChange={handleChange} placeholder="Nome da turma" name='nome' required />
+
+          <section className='formTurmaContainerInput'>
+          <section className='formTurmaInpust'>
+                <label>Matéria:</label>
+                <select name='Materia' onChange={handleChange}>
+                      <option value='Manhã'>Manhã</option>
+                      <option value='Tarde'>Tarde</option>
+                    </select>
+              
+                <label>Professor:</label>
+                <select name='Professor' onChange={handleChange}>
+                      <option value='Manhã'>Manhã</option>
+                      <option value='Tarde'>Tarde</option>
+                    </select>
+            </section>
+            
+            <section className='formTurmaInpust'>
+                <label>Sala:</label>
+                <select name='Sala' onChange={handleChange}>
+                      <option value='Manhã'>Manhã</option>
+                      <option value='Tarde'>Tarde</option>
+                    </select>
+
+                <label>Turno:</label>
+                    <select name='Turno' onChange={handleChange}>
+                      <option value='Manhã'>Manhã</option>
+                      <option value='Tarde'>Tarde</option>
+                    </select>
+              </section>
+          </section>
 
               <label>Código da Turma:</label>
               <input type="text" onChange={handleChange} placeholder="Código da turma" name='codigo' />
-
-              <label>Matéria:</label>
-              <input type="text" onChange={handleChange} placeholder="Matéria" name='materia'/>
-
-              <label>Turno:</label>
               
-              <select name='Turno' onChange={handleChange}>
-                <option value='Manhã'>Manhã</option>
-                <option value='Tarde'>Tarde</option>
-              </select>
-
-              <label>Sala:</label>
-              <input type="text" onChange={handleChange} placeholder="Sala" name='sala' />
-
-              <label>Professor:</label>
-              <input type="text" onChange={handleChange} placeholder="Professor" name='professores' />
-
               <div className="modal-buttons">
-                <button type="submit">Adicionar</button>
-                <button type="button" onClick={closeModal}>Cancelar</button>
-              </div>
+                <button type="submit" id='AdicionarTurma'>Salvar</button>
+              </div> 
+
+
             </form>
           </div>
-        </div>
+        </section>
       )}
 
       <Footer id="footer-Turmas"/>

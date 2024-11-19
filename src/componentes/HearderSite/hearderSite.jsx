@@ -21,6 +21,11 @@ import './hearderSite.css';
 
 const HeaderSite = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
   const [notificacaoOpen, setNotificacaoOpen] = useState(false);
   const [menuLateralOpen, setMenuLateralOpen] = useState(false);
   const [showNotificationModal, setShowNotificationModal] = useState(false);
@@ -211,17 +216,13 @@ const deleteNotificacao = async (id) => {
             {showNotificationModal && (
               <div className="modal-overlay">
                 <div className="modal-content">
+                  <button type="button" onClick={closeModal} id='CancelarModel'><img src={cancelarModel} alt='Botão de cancelar' id='CancelarModelImg' /></button>
+
                   <h1>Criar Notificação</h1>
+
                   <form onSubmit={enviarNotificacao}>
                     <label>Nome do Evento:</label>
-                    <input
-                      type="text"
-                      name="mensagem"
-                      value={novaNotificacao.mensagem}
-                      onChange={handleChange}
-                      placeholder="Nome do evento"
-                      required
-                    />
+                    <input type="text" name="mensagem" value={novaNotificacao.mensagem} onChange={handleChange} placeholder="Nome do evento" required/>
                     <label>Descrição:</label>
                     <input
                       type="text"
