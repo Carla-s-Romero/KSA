@@ -10,6 +10,7 @@
     position: relative;
     z-index: 1;
     color: aliceblue;
+    height: 45rem;
   }
   .background {
     width: 100%;
@@ -49,7 +50,7 @@
   .Contato h2 {
     margin-top: 50px;
     color: var(--colorText); 
-    font-size: 2.25em; 
+    font-size: 2em; 
     font-family: var(--defaultFont); 
     font-weight: 800; 
     margin-bottom: 2rem;
@@ -57,7 +58,7 @@
   
   .Contato h4 {
     color: var(--colorText); 
-    font-size: 1.35em; 
+    font-size: 1em; 
     font-family: Open Sans; 
     font-weight: 700; 
     padding: 0%;
@@ -73,7 +74,7 @@
   
   .telefone a {
     color: white; 
-    font-size: 1.20em; 
+    font-size: 1em; 
     font-family: var(--defaultFont); 
     font-weight: 600; 
     margin-left: 8px; 
@@ -82,8 +83,8 @@
   }
   
   .phone-icon {
-    width: 34px; 
-    height: 30px; 
+    width: 27px; 
+    height: 25px; 
   }
   
   .contatoInfo{
@@ -92,7 +93,7 @@
   
   #linhainferior{
     display: flex;
-    margin-top: 5rem;
+    margin-top: 1rem;
     width: 80%;
     margin-left: 10rem;
   }
@@ -116,7 +117,7 @@
   
   .textTopo{
     display: flex;
-    margin-top: 8rem;
+    margin-top: 4rem;
   }
   
   .textTopo p{
@@ -136,10 +137,10 @@
   #botãoSubir{
     display: flex;
     margin-left: 6.5rem;
-    margin-top: 10rem;
+    margin-top: 3rem;
   }
   
   .subirPag{
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
   

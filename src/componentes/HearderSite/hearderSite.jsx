@@ -9,6 +9,7 @@ import {
   iconSair,
   notificacao,
   IconBoletim,
+  IconBiblioteca,
   IconCalendario,
   IconFrequencia,
   IconPainel,
@@ -21,6 +22,11 @@ import './hearderSite.css';
 
 const HeaderSite = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
   const [notificacaoOpen, setNotificacaoOpen] = useState(false);
   const [menuLateralOpen, setMenuLateralOpen] = useState(false);
   const [showNotificationModal, setShowNotificationModal] = useState(false);
@@ -211,17 +217,13 @@ const deleteNotificacao = async (id) => {
             {showNotificationModal && (
               <div className="modal-overlay">
                 <div className="modal-content">
+                  <button type="button" onClick={closeModal} id='CancelarModel'><img src={cancelarModel} alt='Botão de cancelar' id='CancelarModelImg' /></button>
+
                   <h1>Criar Notificação</h1>
+
                   <form onSubmit={enviarNotificacao}>
                     <label>Nome do Evento:</label>
-                    <input
-                      type="text"
-                      name="mensagem"
-                      value={novaNotificacao.mensagem}
-                      onChange={handleChange}
-                      placeholder="Nome do evento"
-                      required
-                    />
+                    <input type="text" name="mensagem" value={novaNotificacao.mensagem} onChange={handleChange} placeholder="Nome do evento" required/>
                     <label>Descrição:</label>
                     <input
                       type="text"
@@ -269,6 +271,10 @@ const deleteNotificacao = async (id) => {
             <a href='/boletim'><li>Boletim</li></a>
           </div>
           <div className='Icon-Opcoes-Menu'>
+            <img src={IconBiblioteca} alt='boletim-icon' />
+            <a href='/biblioteca'><li>Biblioteca</li></a>
+          </div>
+          <div className='Icon-Opcoes-Menu'>
             <img src={IconCalendario} alt='calendario-icon' />
             <a href='/'><li>Calendário</li></a>
           </div>
@@ -282,7 +288,7 @@ const deleteNotificacao = async (id) => {
           </div>
           <div className='Icon-Opcoes-Menu'>
             <img src={IconTurmas} alt='turmas-icon' />
-            <a href='#a'><li>Turmas</li></a>
+            <a href='/turma'><li>Turmas</li></a>
           </div>
         </section>
 

@@ -42,6 +42,7 @@ import iconConfiguracao from '../assets/Header/config.png';
 import iconSair from '../assets/Header/sair.png';
 import notificacao from '../assets/Header/Notificacao.png';
 import IconBoletim from '../assets/Header/menu/IconBoletim.png';
+import IconBiblioteca from '../assets/Header/menu/IconBiblioteca.png'
 import IconCalendario from '../assets/Header/menu/IconCalendario.png';
 import IconFrequencia from '../assets/Header/menu/IconFrequencia.png';
 import IconPainel from '../assets/Header/menu/IconUser.png';
@@ -56,6 +57,7 @@ import adicionar from '../assets/Classes/AdicionarTurma.png';
 import quantidadeAlunosIcon from '../assets/Classes/IconColaboradores.png';
 import fundoImg from '../assets/Classes/turmaTeste/YOUTZ-MATEMATICA-ENEM.jpg';
 import ImgProfessor from '../assets/Classes/turmaTeste/12161378-m.jpg';
+import cancelarModel from '../assets/Classes/image 30.png';
 
 // Imagens Biblioteca
 import fundoCards from '../assets/Library/Group 63.png'
@@ -132,6 +134,7 @@ export {
   iconSair,             // Ícone de logout
   notificacao,          // Ícone de notificação
   IconBoletim,          // Ícone para boletim
+  IconBiblioteca,       // Ícone para a biblioteca
   IconCalendario,       // Ícone de calendário
   IconFrequencia,       // Ícone de frequência
   IconPainel,           // Ícone do painel do usuário
@@ -146,6 +149,7 @@ export {
   quantidadeAlunosIcon,   // Ícone sobre a quantidade de alunos         
   fundoImg,
   ImgProfessor,
+  cancelarModel,
 
   //Biblioteca
   fundoCards,

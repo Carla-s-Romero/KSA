@@ -4,7 +4,7 @@ import './cHearder.css';
 
 const Header = () => {
     return (
-        <header className="App-header" id="Site">
+        <header className="Appheader" id="Site">
             <img src={logo} className="App-logo" alt="logo" />
             <nav className="nav-home">
                 <img src={perfil} className="perfil-icon" alt="perfil-icon" />
