@@ -23,7 +23,9 @@ import './home.css';
 
 
 
+
 function Home() {
+  
   return (
     <main className="Home">
              <header className="header-app">

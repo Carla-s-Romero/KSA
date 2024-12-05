@@ -1,0 +1,259 @@
+.selectButtonMural {
+    display: flex; 
+    position: relative;
+    margin-left: 4rem;
+    width: 40%; 
+    margin-top: 2rem;
+}
+
+.selectButtonMural button {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 10px 10px;
+    cursor: pointer;
+    position: relative;
+    flex-grow: 1; 
+    margin-right: 3rem;
+}
+
+.selectButtonMural button.active {
+    color: #C6B8F5; 
+}
+
+.underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background-color: #bdbdbd;
+    width: 105%;
+}
+
+.underline div {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background-color: #7e5ee7;
+    width: calc(50rem / 2); /* Dividido igualmente entre os 3 semestres */
+    transform: translateX(0); /* Posição inicial */
+    transition: transform 0.3s ease; /* Animação suave */
+}
+
+.comunicado-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    margin-left: 4rem;
+    margin-top: 6rem;
+}
+
+.comunicado-title::before {
+    content: "▶ ";
+    margin-right: 1rem;
+    color: #FF9900;
+}
+
+.ContainerMural {
+    margin-top: 4rem;
+    margin-left: 4rem;
+    padding-top: 25rem;
+    padding-left: 2rem; 
+    width: 90%;
+    height: 30rem;
+    background-color: #566E7A;
+    margin-bottom: 3rem;
+    border-radius: 8px;
+}
+
+#TitleMural {
+    color: #fff;
+    font-size: 2em;
+}
+
+
+/* Estilo para o Select */
+.InputsMural {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-left: 4rem;
+    font-family: 'Inter';
+    font-size: 1.2em;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    padding: 2rem;
+    margin-bottom: 3rem;
+
+    box-shadow: 10px 7px 20px #b3b3b3;
+}
+
+.Input-Img{
+    display: flex;
+    flex-direction: row;
+}
+.InputsMural:focus {
+    outline: none;
+    border-color: #7e5ee7;
+    box-shadow: 0 0 5px rgba(126, 94, 231, 0.5);
+}
+
+.text-area{
+    border: none;
+    width: 90rem;
+    height: 5rem;
+    padding-top: 2rem;
+    border-bottom: 1px solid #000;
+    font-family: 'Inter';
+    outline: none;
+    font-size: 1rem;
+}
+
+#ImgProfessorMural{
+    width: 6rem;
+    height: 6rem;
+    object-fit: cover;
+    margin-right: 2rem;
+    border-radius: 100%;
+    background-color: #C4C4C4;
+}
+
+.toolbar button{
+    background-color: transparent;
+    border: none;
+    margin: 1rem;
+
+    font-size: 1.3rem;
+}
+
+.toolbar{
+    margin-left: 7rem;
+}
+
+.send-button{
+    width: 14rem;
+    height: 2.3rem;
+    float: right;
+    right: 0%;
+    margin-left: 84rem;
+    border: none;
+    background-color: #03395F;
+    color: #fff;
+    font-weight: bold;
+}
+
+.send-button:hover{
+    background-color: #0a588f;
+}
+
+/* Estilo para a barra de pesquisa */
+.search-bar {
+    margin: 20px 0;
+    margin-left: 2rem;
+
+  }
+  
+  .search-bar input {
+    background-image: url(../../assets/search.png);
+    background-repeat: no-repeat;
+    background-size: 1.5rem;
+    background-position:  2% 40%;
+
+    width: 30%;
+    height: 3rem;
+    padding-left: 3rem;
+    font-size: 14px;
+    border: 1px solid #7c7a7a;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+  }
+
+  
+  .search-bar input:focus {
+    border-color: #007bff;
+  }
+
+  
+  /* Estilo para a lista de alunos */
+  .pessoas-content {
+    padding: 20px;
+  }
+  
+  .aluno-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .aluno-item:hover {
+    background-color: #f7f7f7;
+  }
+  
+  .aluno-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .aluno-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin-right: 10px;
+  }
+  
+  .aluno-info span {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .delete-button {
+    width: 100%;
+    padding: 6px 12px;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .delete-button:hover {
+    background-color: #c0392b;
+  }
+  
+  .InputsMural2 {
+    display: grid;
+    grid-template-columns: 16fr 1fr 1fr;
+    width: 90%;
+    margin-left: 2rem;
+    font-family: 'Inter';
+    font-size: 1.2em;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    padding: 2rem;
+    margin-bottom: 1rem;
+
+    box-shadow: 10px 7px 20px #b3b3b3;
+}
+
+
+  

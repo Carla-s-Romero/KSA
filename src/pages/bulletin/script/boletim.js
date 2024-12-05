@@ -2,7 +2,9 @@ import {useState } from 'react';
 
 export const useBoletim = () => {
     const [dados, setDados] = useState([
-        { aluno: '', av1: '', av2: '', mencao: '', noa: '', situacao: '', av2Enabled: false },
+        { imagem: '../../assets/perfilIcon.png', aluno: 'Anna Carolina', av1: '', av2: '', mencao: '', noa: '', situacao: '', av2Enabled: false },
+        {  imagem: '../../assets/perfilIcon.png',aluno: 'Eric Fernandes', av1: '', av2: '', mencao: '', noa: '', situacao: '', av2Enabled: false },
+        {  imagem: '../../assets/perfilIcon.png', aluno: 'Guilherme Domingues', av1: '', av2: '', mencao: '', noa: '', situacao: '', av2Enabled: false },
     ]);
 
     const [activeTab, setActiveTab] = useState(1);

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   HeaderHome,
   Footer,
@@ -10,142 +11,170 @@ import {
   aluno,
   coordenador
 } from '../../imports/imports'; 
-
 import './login.css';
-
 
 function Login() {
   const [selectedCard, setSelectedCard] = useState(null);
-  const [errorMessage, setErrorMessage] = useState('');
-  const [showLogin2, setShowLogin2] = useState(false);
+  const [showLoginForm, setShowLoginForm] = useState(false);
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [senha, setSenha] = useState('');
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
+  const navigate = useNavigate();
+
+  // Função para alternar a visibilidade da senha
+  const handlePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
+
+  // Função para lidar com o login
+  const handleLogin = async () => {
+    if (!email || !senha) {
+      setErrorMessage('Por favor, preencha todos os campos.');
+      return;
+    }
+
+    setIsLoading(true);
+
+    const backendUrl = 'https://back-end-mediotec.onrender.com/api';
+    try {
+      const response = await fetch(`${backendUrl}/auth/login/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, senha }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('userId', data.userId);
+        navigate('/turmas');
+      } else {
+        setErrorMessage(data.message || 'Erro no login. Tente novamente.');
+      }
+    } catch (error) {
+      setErrorMessage('Erro na conexão com o servidor.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Função para selecionar um card
   const handleCardClick = (card) => {
     setSelectedCard(card);
     setErrorMessage('');
   };
 
+  // Função para exibir o formulário de login
   const handleNextButtonClick = () => {
     if (!selectedCard) {
       setErrorMessage('Por favor, selecione um perfil para continuar.');
-    } else {
-      setShowLogin2(true); 
+      return;
     }
+    setShowLoginForm(true);
   };
-
-  const handleLogin = async (e) => {
-    e.preventDefault(); // Previne o comportamento padrão do formulário
-    const response = await fetch('http://localhost:5000/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
-    });
-    
-    const data = await response.json();
-
-    if (response.ok) {
-      // Redirecionar para a tela de turmas
-      console.log('Login bem-sucedido:', data.user);
-      // Você pode usar o React Router para redirecionar para outra rota
-    } else {
-      setErrorMessage(data.message);
-    }
-  };
-
-  if (showLogin2) {
-    return (
-      <form onSubmit={handleLogin}>
-      <HeaderHome />
-      <img src={triangulo} alt='decoracao' id='decInferior' />
-      <TitleRegistrationLogin 
-        title="Olá, Seja bem-vindo!!"
-        paragrafo="preencha os dados abaixo para realizar seu login"
-      />
-
-      <form action=''>
-        <section className='forms-login'>
-
-          <div className='forms-teste'>
-          <label>E-mail:</label>
-          <input type='email' id='email'  placeholder="Digite seu email" required></input>
-          <br />
-          <label id='labelSenha'>Senha:</label>
-          <input type='password' id='password' placeholder="Digite sua senha" required></input>
-
-          <a href='#a' id='EsquecSenha'>Esqueceu a senha?</a>
-
-          
-          <Button title="Finalizar"/>
-          </div>
-        </section>
-      </form>
-
-      <img src={decoracaoInfer} alt='decoracao' id='decInferior' />
-      <Footer />
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
-      </form>
-    );
-  }
 
   return (
     <div className="login">
       <HeaderHome />
-      <img src={triangulo} alt='decoracao' id='decInferior' />
-      <TitleRegistrationLogin 
-        title="Olá, Seja bem-vindo!!"
-        paragrafo="Selecione um card para dar continuidade ao seu login"
-      />
+      <img src={triangulo} alt="decoracao" id="decInferior" />
 
-      <form>
-        <section className="ContainerSquare">
-          <div className='Square'>
-            <button 
-              type="button" 
-              className={`new-square ${selectedCard === 'Professor' ? 'selected' : ''}`}
-              onClick={() => handleCardClick('Professor')}
-            >
-              <img src={professor} alt="Professor" />
-              <h2>Professor</h2>
-              <p className="description">O professor é o responsável por planejar, ensinar e orientar alunos, promovendo o aprendizado e o desenvolvimento de habilidades e valores.</p>
-            </button>
+      {!showLoginForm ? (
+        <>
+          <TitleRegistrationLogin 
+            title="Olá, Seja bem-vindo!!"
+            paragrafo="Selecione um perfil para continuar o login"
+          />
 
-            <button 
-              type="button" 
-              className={`new-square ${selectedCard === 'Aluno' ? 'selected' : ''}`}
-              onClick={() => handleCardClick('Aluno')}
-            >
-              <img src={aluno} alt="Aluno" />
-              <h2>Aluno</h2>
-              <p className="description">O aluno é aquele que busca aprendizado, desenvolvendo habilidades e conhecimentos através do estudo contínuo e da curiosidade.</p>
-            </button>
+          <section className="ContainerSquare">
+            <div className="Square">
+              {['Professor', 'Aluno', 'Coordenador'].map((role, index) => (
+                <button 
+                  key={index}
+                  type="button" 
+                  className={`new-square ${selectedCard === role ? 'selected' : ''}`}
+                  onClick={() => handleCardClick(role)}
+                >
+                  <img 
+                    src={role === 'Professor' ? professor : role === 'Aluno' ? aluno : coordenador} 
+                    alt={role} 
+                  />
+                  <h2>{role}</h2>
+                  <p className="description">
+                    {role === 'Professor' && 'Responsável por planejar e orientar os alunos.'}
+                    {role === 'Aluno' && 'Busca aprendizado e desenvolvimento.'}
+                    {role === 'Coordenador' && 'Planeja e supervisiona atividades e equipes.'}
+                  </p>
+                </button>
+              ))}
+            </div>
+          </section>
 
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
+
+          <div className="button-container">
             <button 
-              type="button" 
-              className={`new-square ${selectedCard === 'Coordenador' ? 'selected' : ''}`}
-              onClick={() => handleCardClick('Coordenador')}
+              className="button-next" 
+              onClick={handleNextButtonClick} 
+              disabled={!selectedCard}
             >
-              <img src={coordenador} alt="Coordenador" />
-              <h2>Coordenador</h2>
-              <p className="description">O coordenador é o responsável por planejar, organizar e supervisionar atividades e equipes, garantindo o cumprimento de objetivos e a eficiência dos processos.</p>
+              Próximo
             </button>
           </div>
-        </section>
-
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-        <div className='button-container'>
-          <Button 
-            title="Próximo"
-            onClick={handleNextButtonClick}
-            disabled={!selectedCard} 
+        </>
+      ) : (
+        <>
+          <TitleRegistrationLogin 
+            title="Bem-vindo de volta!"
+            paragrafo="Preencha os dados para acessar sua conta"
           />
-        </div>
-      </form>
 
-      <img src={decoracaoInfer} alt='decoracao' id='decInferior' />
+          <section className="forms-login">
+            <div className="login-form">
+              <label>Email:</label>
+              <input
+                type="email"
+                placeholder="Digite seu email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+
+        <div className='passwordInput'>
+          <label>Senha:</label>
+              <input
+                type={isPasswordVisible ? 'text' : 'password'}
+                placeholder="Digite sua senha"
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+              />
+            </div>
+           
+              
+              <a id='EsquecSenha'>Esqueci a senha</a>
+              {errorMessage && <p className="error-message">{errorMessage}</p>}
+              <Button 
+              title ="Entrar"
+                type="button" 
+                onClick={handleLogin} 
+                disabled={isLoading}
+              >
+                
+                {isLoading ? 'Entrando...' : 'Login'}
+              </Button>
+             
+            </div>
+
+          
+          </section>
+        </>
+      )}
+
+      <img src={decoracaoInfer} alt="decoracao" id="decInferior" />
       <Footer />
     </div>
   );

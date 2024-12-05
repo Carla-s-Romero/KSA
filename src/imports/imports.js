@@ -56,7 +56,7 @@ import TurmaDecoracaoSuperior from '../assets/Classes/decoraçãoRedonda.png';
 import adicionar from '../assets/Classes/AdicionarTurma.png';
 import quantidadeAlunosIcon from '../assets/Classes/IconColaboradores.png';
 import fundoImg from '../assets/Classes/turmaTeste/YOUTZ-MATEMATICA-ENEM.jpg';
-import ImgProfessor from '../assets/Classes/turmaTeste/12161378-m.jpg';
+// import ImgProfessor from '../assets/Classes/turmaTeste/12161378-m.jpg';
 import cancelarModel from '../assets/Classes/image 30.png';
 
 // Imagens Biblioteca
@@ -148,7 +148,7 @@ export {
   adicionar,              // Ícone para adicionar uma nova turma
   quantidadeAlunosIcon,   // Ícone sobre a quantidade de alunos         
   fundoImg,
-  ImgProfessor,
+  // ImgProfessor,
   cancelarModel,
 
   //Biblioteca

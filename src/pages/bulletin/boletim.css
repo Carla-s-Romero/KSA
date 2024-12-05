@@ -13,25 +13,31 @@
 /* Configuração do select  */                                       
 /* ------------------------------------------------------------------------------------------------------------------------------------ */
 
-.options{
+.select{
+
+}
+
+.options2{
     border: 1px black solid;
     width: 17rem;
     height: 4rem;
+  
 }
 
-.options{
+.options2{
     appearance: none; 
     -webkit-appearance: none;
     -moz-appearance: none; 
     background: url('../../assets/Bulletin/selectInput.png') no-repeat right;
     background-position: right 1.5rem center;
     background-size: 1.5rem 1rem 1.5rem 2rem;
-    padding-right: 2rem;
+    padding-right: 1rem;
     padding-left: 1rem;
     border: 1px solid #000000;
     font-size: 1em;
     font-family: 'Open Sans';
     font-weight: 600;
+ 
 }
 
 .options:focus {
@@ -52,6 +58,8 @@ table input{
     outline: none;
     height: 100%;
 }
+
+
 
 .boletim-tabela thead{
    background: rgba(239.06, 147.02, 8.96, 0.81);
@@ -95,7 +103,6 @@ th, td {
 tbody td{
     padding: 1rem;
 }
-
 
 
 th:first-child {
@@ -175,7 +182,7 @@ th:nth-child(6) {
     left: 0;
     height: 3px;
     background-color: #7e5ee7;
-    width: calc(40rem / 3); /* Dividido igualmente entre os 3 semestres */
+    width: calc(20rem / 3); /* Dividido igualmente entre os 3 semestres */
     transform: translateX(0); /* Posição inicial */
     transition: transform 0.3s ease; /* Animação suave */
 }
@@ -198,7 +205,7 @@ th:nth-child(6) {
 
 
 #buttonBoletim{
-    margin-left: 10rem;
+    margin-left: 30%;
 }
 
 #footerBoletim{
@@ -206,10 +213,36 @@ th:nth-child(6) {
 }
 
 .select{
+    position: relative;
+    margin-top: 2rem;
+    margin-left: 0.5rem;
     display: flex;
     flex-direction: row;
 }
 
 .Disciplina-select{
     margin-right: 5rem;
+}
+
+.aluno-info {
+    display: flex;
+    align-items: center;
+}
+
+.aluno-imagem {
+    background-color: #777;
+    width: 30px; /* Tamanho da imagem */
+    height: 30px; /* Tamanho da imagem */
+    margin-right: 10px; /* Espaçamento entre a imagem e o nome */
+    border-radius: 50%; /* Deixa a imagem redonda (opcional) */
+}
+
+.legenda{
+    margin-top: 2rem;
+}
+
+#TitleLegenda{
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
 }
